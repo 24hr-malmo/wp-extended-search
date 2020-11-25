@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: 24HR Extenden Wordpress Search
+ * Plugin Name: 24HR Extended Wordpress Search
  * Plugin URI: https://gitlab.24hr.se/marcus/24hr-checklist-gutenberg-plugin
  * Description: Extends the admin search (default and Nested Pages) to search in content column in database as well.
  * Author: Marcus Thelin <marcus.thelin@24hr.se>
