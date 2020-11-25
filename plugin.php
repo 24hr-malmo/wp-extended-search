@@ -14,7 +14,17 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+require_once( 'lib/wp-filter-helpers.php');
+require_once('classes/search-extender.php');
 
-require_once(plugins_url( './classes/search-extender' , __FILE__ ));
 
-new SearchExtender24HR\SearchExtender();
+/**
+ * Make sure this plugin is loaded as late as possible to
+ * avoid it being loaded before Nested Pages.
+ */
+add_action('plugins_loaded', 'init_search_extender');
+function init_search_extender(){  
+    new SearchExtender24HR\SearchExtender();
+}
+
+

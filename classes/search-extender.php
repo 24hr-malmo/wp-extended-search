@@ -1,10 +1,6 @@
 <?php
 namespace SearchExtender24HR;
 
-use SearchExtender24HR\Lib;
-
-require_once(plugins_url( '../lib/wp-filter-helpers.php' , __FILE__ ));
-
 class SearchExtender {
     public function __construct() {
         add_filter( 'posts_search', [$this, 'searcher'], 10, 2 );
@@ -15,11 +11,11 @@ class SearchExtender {
         // The Nested Pages plugin is hooking into the posts_where filter
         // and this interferes with this plugin. Remove its implementation.
         if (class_exists('NestedPages\Entities\Listing\ListingActions')) {
-            remove_filters_for_anonymous_class('posts_where', 'NestedPages\Entities\Listing\ListingActions', 'titleSearch', 10);
+            Lib\remove_filters_for_anonymous_class('posts_where', 'NestedPages\Entities\Listing\ListingActions', 'titleSearch', 10);
         }
     }
 
-    private function searcher( $search, $wp_query ) {
+    public function searcher( $search, $wp_query ) {
         // Bail if we are not in the admin area
         if ( ! is_admin() ) {
             return $search;
