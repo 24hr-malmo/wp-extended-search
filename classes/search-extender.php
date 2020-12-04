@@ -39,7 +39,7 @@ class SearchExtender {
         }
         
         // Return modified posts_search clause.
-        $extended_clause = "AND wp_posts.post_type = '" . $post_type . "' AND (wp_posts.post_content RLIKE '" . $search_string . "' OR wp_posts.post_title RLIKE '" . $search_string . "')";
+        $extended_clause = "AND post_type = '" . $post_type . "' AND (post_content RLIKE '" . $search_string . "' OR post_title RLIKE '" . $search_string . "')";
         return $extended_clause;
     }
 
