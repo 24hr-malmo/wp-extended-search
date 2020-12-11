@@ -34,6 +34,9 @@ class SearchExtender {
         } 
         if ($post_type == 'nestedpages') {
             $post_type = 'page';
+        } else if (preg_match('/^acf/', $post_type)) {
+            // Bail if we come across an ACF query.
+            return $search;
         } else {
             $post_type = preg_replace('/^nestedpages-/', '',$post_type);
         }
