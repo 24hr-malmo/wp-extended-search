@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/24hr-malmo/wp-extended-search
  * Description: Extends the admin search (default and Nested Pages) to search in content column in database as well.
  * Author: Marcus Thelin <marcus.thelin@24hr.se>
- * Version: 2.0.1
+ * Version: 2.0.2
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *

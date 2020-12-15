@@ -17,10 +17,10 @@ class SearchExtender {
 
     public function searcher( $search, $wp_query ) {
         // Bail if we are not in the admin area
+
         if ( ! is_admin() ) {
             return $search;
         }
-    
     
         $search_string = get_query_var( 's' );
         if (!$search_string) {
@@ -32,13 +32,17 @@ class SearchExtender {
         if (!$post_type) {
             $post_type = $_GET['page'];
         } 
+        
+        /**
+         * Check if the post type is nestedpages 
+         */
         if ($post_type == 'nestedpages') {
             $post_type = 'page';
-        } else if (preg_match('/^acf/', $post_type)) {
-            // Bail if we come across an ACF query.
-            return $search;
-        } else {
+        } else if (preg_match('/^nestedpages-/', $post_type)){
             $post_type = preg_replace('/^nestedpages-/', '',$post_type);
+        } else {
+            // Standard page search already support searching content, so if it is not nestedpages we return standard search
+            return $search;
         }
         
         // Return modified posts_search clause.
